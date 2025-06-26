@@ -3,8 +3,8 @@ class ListPlanSubscribersUseCase {
     this.subscriptionRepository = subscriptionRepository;
   }
 
-  async execute(planId) {
-    return this.subscriptionRepository.findByPlanId(planId);
+  async execute(codPlano) {
+    return this.subscriptionRepository.findByCodPlano(codPlano);
   }
 }
 

@@ -1,9 +1,9 @@
 class Subscription {
-  constructor(id, clientId, planId, startDate, endDate, status, lastPaymentDate, nextPaymentDate) {
-    if (!clientId) {
+  constructor(id, codCli, codPlano, startDate, endDate, status, lastPaymentDate, nextPaymentDate) {
+    if (!codCli) {
       throw new Error('Subscription must be associated with a client.');
     }
-    if (!planId) {
+    if (!codPlano) {
       throw new Error('Subscription must be associated with a plan.');
     }
     if (!startDate || !(startDate instanceof Date)) {
@@ -14,8 +14,8 @@ class Subscription {
     }
 
     this.id = id;
-    this.clientId = clientId;
-    this.planId = planId;
+    this.codCli = codCli;
+    this.codPlano = codPlano;
     this.startDate = startDate;
     this.endDate = endDate;
     this.status = status || 'active'; // Default to active

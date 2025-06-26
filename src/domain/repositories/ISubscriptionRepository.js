@@ -5,11 +5,11 @@ class ISubscriptionRepository {
   async findById(id) {
     throw new Error('Method "findById" not implemented.');
   }
-  async findByClientId(clientId) {
-    throw new Error('Method "findByClientId" not implemented.');
+  async findByCodCli(codCli) {
+    throw new Error('Method "findBycodCli" not implemented.');
   }
-  async findByPlanId(planId) {
-    throw new Error('Method "findByPlanId" not implemented.');
+  async findByCodPlano(codPlano) {
+    throw new Error('Method "findBycodPlano" not implemented.');
   }
   async update(subscription) {
     throw new Error('Method "update" not implemented.');

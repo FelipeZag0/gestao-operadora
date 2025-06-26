@@ -8,13 +8,13 @@ class CreateSubscriptionUseCase {
     this.subscriptionDomainService = subscriptionDomainService;
   }
 
-  async execute(clientId, planId, startDate) {
-    const client = await this.clientRepository.findById(clientId);
+  async execute(codCli, codPlano, startDate) {
+    const client = await this.clientRepository.findById(codCli);
     if (!client) {
       throw new Error('Client not found.');
     }
 
-    const plan = await this.planRepository.findById(planId);
+    const plan = await this.planRepository.findById(codPlano);
     if (!plan) {
       throw new Error('Plan not found.');
     }
@@ -24,8 +24,8 @@ class CreateSubscriptionUseCase {
 
     const subscription = new Subscription(
       null,
-      clientId,
-      planId,
+      codCli,
+      codPlano,
       new Date(startDate),
       null, // endDate
       'active',

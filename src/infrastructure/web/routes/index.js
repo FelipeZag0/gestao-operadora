@@ -1,8 +1,7 @@
-const express = require('express');
-
+const { Router } = require('express');
 class AppRouter {
   constructor(clientController, planController, subscriptionController, paymentController) {
-    this.router = express.Router();
+    this.router = Router();
     this.clientController = clientController;
     this.planController = planController;
     this.subscriptionController = subscriptionController;
@@ -18,7 +17,7 @@ class AppRouter {
     // Plan routes
     this.router.get('/gerenciaplanos/planos', this.planController.listPlans.bind(this.planController));
     this.router.post('/gerenciaplanos/planos', this.planController.registerPlan.bind(this.planController));
-    this.router.patch('/gerenciaplanos/planos/:idPlano', this.planController.updatePlanCost.bind(this.planController)); // Adding update cost endpoint
+    this.router.patch('/gerenciaplanos/planos/:idPlano', this.planController.updatePlanCost.bind(this.planController));
 
     // Subscription routes
     this.router.post('/gerenciaplanos/assinaturas', this.subscriptionController.createSubscription.bind(this.subscriptionController));

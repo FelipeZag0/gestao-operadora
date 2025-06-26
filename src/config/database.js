@@ -13,4 +13,8 @@ const sequelize = new Sequelize(
   }
 );
 
-module.exports = sequelize;
+module.exports = {
+  sequelize: sequelize, // Exporta a instância completa do Sequelize (se precisar dela em outro lugar)
+  authenticate: sequelize.authenticate.bind(sequelize), // Exporta o método authenticate
+  sync: sequelize.sync.bind(sequelize), // Exporta o método sync
+};

@@ -7,8 +7,8 @@ class SubscriptionController {
 
   async createSubscription(req, res) {
     try {
-      const { clientId, planId, startDate } = req.body;
-      const subscription = await this.createSubscriptionUseCase.execute(clientId, planId, startDate);
+      const { codCli, codPlano, startDate } = req.body;
+      const subscription = await this.createSubscriptionUseCase.execute(codCli, codPlano, startDate);
       res.status(201).json(subscription);
     } catch (error) {
       res.status(400).json({ error: error.message });

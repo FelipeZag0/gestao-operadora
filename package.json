@@ -1,6 +1,7 @@
 {
   "name": "subscription-management-system",
   "version": "1.0.0",
+  "type": "commonjs",
   "description": "Backend system for managing internet provider subscriptions - Phase 1",
   "main": "src/main.js",
   "scripts": {
@@ -20,9 +21,10 @@
   "author": "Your Name",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "pg": "^8.11.3",
+    "pg": "^8.16.2",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.3"
   },

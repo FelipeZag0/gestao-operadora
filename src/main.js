@@ -1,48 +1,48 @@
 require('dotenv').config();
-const sequelize = require('./config/database');
-const Server = require('./server');
+const { authenticate, sync } = require('./config/database.js');
+const Server = require('./server.js');
 
 // Import Domain Entities (for sequelize sync)
-const ClientModel = require('./infrastructure/database/models/ClientModel');
-const PlanModel = require('./infrastructure/database/models/PlanModel');
-const SubscriptionModel = require('./infrastructure/database/models/SubscriptionModel');
-const PaymentModel = require('./infrastructure/database/models/PaymentModel');
+const ClientModel = require('./infrastructure/database/models/ClientModel.js');
+const PlanModel = require('./infrastructure/database/models/PlanModel.js');
+const SubscriptionModel = require('./infrastructure/database/models/SubscriptionModel.js');
+const PaymentModel = require('./infrastructure/database/models/PaymentModel.js');
 
 // Repositories
-const ClientRepositoryPg = require('./infrastructure/database/repositories/ClientRepositoryPg');
-const PlanRepositoryPg = require('./infrastructure/database/repositories/PlanRepositoryPg');
-const SubscriptionRepositoryPg = require('./infrastructure/database/repositories/SubscriptionRepositoryPg');
-const PaymentRepositoryPg = require('./infrastructure/database/repositories/PaymentRepositoryPg');
+const ClientRepositoryPg = require('./infrastructure/database/repositories/ClientRepositoryPg.js');
+const PlanRepositoryPg = require('./infrastructure/database/repositories/PlanRepositoryPg.js');
+const SubscriptionRepositoryPg = require('./infrastructure/database/repositories/SubscriptionRepositoryPg.js');
+const PaymentRepositoryPg = require('./infrastructure/database/repositories/PaymentRepositoryPg.js');
 
 // Domain Services
-const SubscriptionDomainService = require('./infrastructure/services/SubscriptionDomainService');
+const SubscriptionDomainService = require('./infrastructure/services/SubscriptionDomainService.js');
 
 // Use Cases
-const RegisterClientUseCase = require('./application/use-cases/RegisterClientUseCase');
-const ListClientsUseCase = require('./application/use-cases/ListClientsUseCase');
-const RegisterPlanUseCase = require('./application/use-cases/RegisterPlanUseCase');
-const ListPlansUseCase = require('./application/use-cases/ListPlansUseCase');
-const CreateSubscriptionUseCase = require('./application/use-cases/CreateSubscriptionUseCase');
-const ListClientSubscriptionsUseCase = require('./application/use-cases/ListClientSubscriptionsUseCase');
-const ListPlanSubscribersUseCase = require('./application/use-cases/ListPlanSubscribersUseCase');
-const RegisterPaymentUseCase = require('./application/use-cases/RegisterPaymentUseCase');
+const RegisterClientUseCase = require('./application/use-cases/RegisterClientUseCase.js');
+const ListClientsUseCase = require('./application/use-cases/ListClientsUseCase.js');
+const RegisterPlanUseCase = require('./application/use-cases/RegisterPlanUseCase.js');
+const ListPlansUseCase = require('./application/use-cases/ListPlansUseCase.js');
+const CreateSubscriptionUseCase = require('./application/use-cases/CreateSubscriptionUseCase.js');
+const ListClientSubscriptionsUseCase = require('./application/use-cases/ListClientSubscriptionsUseCase.js');
+const ListPlanSubscribersUseCase = require('./application/use-cases/ListPlanSubscribersUseCase.js');
+const RegisterPaymentUseCase = require('./application/use-cases/RegisterPaymentUseCase.js');
 
 // Controllers
-const ClientController = require('./infrastructure/web/controllers/ClientController');
-const PlanController = require('./infrastructure/web/controllers/PlanController');
-const SubscriptionController = require('./infrastructure/web/controllers/SubscriptionController');
-const PaymentController = require('./infrastructure/web/controllers/PaymentController');
+const ClientController = require('./infrastructure/web/controllers/ClientController.js');
+const PlanController = require('./infrastructure/web/controllers/PlanController.js');
+const SubscriptionController = require('./infrastructure/web/controllers/SubscriptionController.js');
+const PaymentController = require('./infrastructure/web/controllers/PaymentController.js');
 
 // Routes
-const AppRouter = require('./infrastructure/web/routes');
+const AppRouter = require('./infrastructure/web/routes/index.js'); 
 
 async function initializeDatabase() {
   try {
-    await sequelize.authenticate();
+    await authenticate();
     console.log('Database connection has been established successfully.');
 
     // Sync all models (create tables if they don't exist)
-    await sequelize.sync();
+    await sync();
     console.log('All models were synchronized successfully.');
   } catch (error) {
     console.error('Unable to connect to the database or sync models:', error);
@@ -74,7 +74,7 @@ async function main() {
 
   // Instantiate Controllers (Dependency Injection)
   const clientController = new ClientController(registerClientUseCase, listClientsUseCase);
-  const planController = new PlanController(registerPlanUseCase, listPlansUseCase); // Needs update for PATCH
+  const planController = new PlanController(registerPlanUseCase, listPlansUseCase);
   const subscriptionController = new SubscriptionController(createSubscriptionUseCase, listClientSubscriptionsUseCase, listPlanSubscribersUseCase);
   const paymentController = new PaymentController(registerPaymentUseCase);
 

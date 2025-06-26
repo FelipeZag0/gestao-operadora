@@ -7,8 +7,8 @@ class SubscriptionRepositoryPg extends ISubscriptionRepository {
     if (!data) return null;
     return new Subscription(
       data.id,
-      data.clientId,
-      data.planId,
+      data.codCli,
+      data.codPlano,
       data.startDate,
       data.endDate,
       data.status,
@@ -27,13 +27,13 @@ class SubscriptionRepositoryPg extends ISubscriptionRepository {
     return this._toDomain(subscriptionData);
   }
 
-  async findByClientId(clientId) {
-    const subscriptionsData = await SubscriptionModel.findAll({ where: { clientId } });
+  async findByCodCli(codCli) {
+    const subscriptionsData = await SubscriptionModel.findAll({ where: { codCli } });
     return subscriptionsData.map(this._toDomain);
   }
 
-  async findByPlanId(planId) {
-    const subscriptionsData = await SubscriptionModel.findAll({ where: { planId } });
+  async findByCodPlano(codPlano) {
+    const subscriptionsData = await SubscriptionModel.findAll({ where: { codPlano } });
     return subscriptionsData.map(this._toDomain);
   }
 

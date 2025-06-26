@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../../../config/database');
+const { sequelize } = require('../../../config/database.js'); 
 const ClientModel = require('./ClientModel');
 const PlanModel = require('./PlanModel');
 
@@ -9,7 +9,7 @@ const SubscriptionModel = sequelize.define('Subscription', {
     autoIncrement: true,
     primaryKey: true,
   },
-  clientId: {
+  codCli: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
@@ -17,7 +17,7 @@ const SubscriptionModel = sequelize.define('Subscription', {
       key: 'id',
     },
   },
-  planId: {
+  codPlano: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
@@ -51,7 +51,7 @@ const SubscriptionModel = sequelize.define('Subscription', {
   timestamps: false,
 });
 
-SubscriptionModel.belongsTo(ClientModel, { foreignKey: 'clientId', as: 'client' });
-SubscriptionModel.belongsTo(PlanModel, { foreignKey: 'planId', as: 'plan' });
+SubscriptionModel.belongsTo(ClientModel, { foreignKey: 'codCli', as: 'client' });
+SubscriptionModel.belongsTo(PlanModel, { foreignKey: 'codPlano', as: 'plan' });
 
 module.exports = SubscriptionModel;

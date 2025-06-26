@@ -3,8 +3,8 @@ class ListClientSubscriptionsUseCase {
     this.subscriptionRepository = subscriptionRepository;
   }
 
-  async execute(clientId) {
-    return this.subscriptionRepository.findByClientId(clientId);
+  async execute(codCli) {
+    return this.subscriptionRepository.findBycodCli(codCli);
   }
 }
 
