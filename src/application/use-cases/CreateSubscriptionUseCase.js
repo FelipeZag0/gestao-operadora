@@ -19,17 +19,22 @@ class CreateSubscriptionUseCase {
       throw new Error('Plan not found.');
     }
 
-    // Assuming monthly payment frequency for initial nextPaymentDate calculation (can be dynamic based on plan)
-    const initialNextPaymentDate = this.subscriptionDomainService.calculateNextPaymentDate(new Date(startDate), 1);
+    const parsedStartDate = new Date(startDate);
+    if (isNaN(parsedStartDate.getTime())) {
+        throw new Error('Formato de startDate inválido. Por favor, forneça uma data no formato AAAA-MM-DD.');
+    }
+    parsedStartDate.setHours(0, 0, 0, 0);
+
+    const initialNextPaymentDate = this.subscriptionDomainService.calculateNextPaymentDate(parsedStartDate, 1);
 
     const subscription = new Subscription(
       null,
       codCli,
       codPlano,
-      new Date(startDate),
-      null, // endDate
+      parsedStartDate,
+      null,
       'active',
-      null, // lastPaymentDate
+      null,
       initialNextPaymentDate
     );
 

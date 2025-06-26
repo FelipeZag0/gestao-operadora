@@ -53,7 +53,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\r\n    \"name\": \"Novo Cliente Exemplo\",\r\n    \"email\": \"cliente.exemplo@dominio.com\",\r\n    \"document\": \"11122233344\"\r\n}",
+                            "raw": "{\r\n \t\"name\": \"Novo Cliente Exemplo\",\r\n \t\"email\": \"cliente.exemplo@dominio.com\",\r\n \t\"document\": \"11122233344\"\r\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -107,7 +107,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\r\n    \"name\": \"Plano Standard\",\r\n    \"description\": \"Um plano para o dia a dia\",\r\n    \"monthlyCost\": 49.99\r\n}",
+                            "raw": "{\r\n \t\"name\": \"Plano Standard\",\r\n \t\"description\": \"Um plano para o dia a dia\",\r\n \t\"monthlyCost\": 49.99\r\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -134,14 +134,14 @@
                     "request": {
                         "method": "POST",
                         "header": [
-                             {
+                            {
                                 "key": "Content-Type",
                                 "value": "application/json"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\r\n    \"codCli\": \"ID_DO_CLIENTE_AQUI\",\r\n    \"codPlano\": \"ID_DO_PLANO_AQUI\",\r\n    \"custoFinal\": 10.99,\r\n    \"descricao\": \"Cliente já havia negociado em 2022 e desistido da assinatura.\"\r\n}",
+                            "raw": "{\r\n \t\"codCli\": \"ID_DO_CLIENTE_AQUI\",\r\n \t\"codPlano\": \"ID_DO_PLANO_AQUI\",\r\n \t\"startDate\": \"2024-06-26\",\r\n \t\"custoFinal\": 10.99,\r\n \t\"descricao\": \"Cliente já havia negociado em 2022 e desistido da assinatura.\"\r\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -159,7 +159,7 @@
                                 "assinaturas"
                             ]
                         },
-                        "description": "### POST /gerenciaplanos/assinaturas\n\nEsse endpoint faz uma solicitação HTTP POST para localhost:3000/gerenciaplanos/assinaturas a fim de adicionar uma assinatura.\n\n#### Request Body\n\n- `codCli` (número): O código do cliente.\n    \n- `codPlano` (número): O código do plano.\n    \n- `custoFinal`(número): O valor que o cliente pagará nesta assinatura durante o período de fidelidade.\n    \n- `descricao` (texto): Descrição preenchida pelo atendente no momento que a venda foi concluída."
+                        "description": "### POST /gerenciaplanos/assinaturas\n\nEsse endpoint faz uma solicitação HTTP POST para localhost:3000/gerenciaplanos/assinaturas a fim de adicionar uma assinatura.\n\n#### Request Body\n\n- `codCli` (número): O código do cliente.\n \t\n- `codPlano` (número): O código do plano.\n \t\n- `startDate` (string, AAAA-MM-DD): A data de início da assinatura. **(ADICIONADO)**\n \t\n- `custoFinal`(número): O valor que o cliente pagará nesta assinatura durante o período de fidelidade.\n \t\n- `descricao` (texto): Descrição preenchida pelo atendente no momento que a venda foi concluída."
                     },
                     "response": []
                 },
@@ -168,14 +168,14 @@
                     "request": {
                         "method": "PATCH",
                         "header": [
-                             {
+                            {
                                 "key": "Content-Type",
                                 "value": "application/json"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\r\n    \"newMonthlyCost\": 0.01\r\n}",
+                            "raw": "{\r\n \t\"newMonthlyCost\": 0.01\r\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -375,14 +375,14 @@
                     "request": {
                         "method": "POST",
                         "header": [
-                             {
+                            {
                                 "key": "Content-Type",
                                 "value": "application/json"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\r\n    \"dia\": 1,\r\n    \"mes\": 1,\r\n    \"ano\": 2025,\r\n    \"codAss\": \"ID_DA_ASSINATURA_AQUI\",\r\n    \"valorPago\": 0.01\r\n}",
+                            "raw": "{\r\n \t\"dia\": 1,\r\n \t\"mes\": 1,\r\n \t\"ano\": 2025,\r\n \t\"codAss\": \"ID_DA_ASSINATURA_AQUI\",\r\n \t\"valorPago\": 0.01\r\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -399,7 +399,7 @@
                                 "registrarpagamento"
                             ]
                         },
-                        "description": "### POST /registrarpagamento\n\nO endpoint é usado para registrar um pagamento. A solicitação deve incluir os seguintes parâmetros no body.\n\n#### Request Body\n\n- `dia` (número): O dia do pagamento.\n    \n- `mes` (número): O mês do pagamento.\n    \n- `ano` (número): O ano do pagamento.\n    \n- `codAss` (número): O código associado ao pagamento.\n    \n- `valorPago` (número): O valor pago."
+                        "description": "### POST /registrarpagamento\n\nO endpoint é usado para registrar um pagamento. A solicitação deve incluir os seguintes parâmetros no body.\n\n#### Request Body\n\n- `dia` (número): O dia do pagamento.\n \t\n- `mes` (número): O mês do pagamento.\n \t\n- `ano` (número): O ano do pagamento.\n \t\n- `codAss` (número): O código associado ao pagamento.\n \t\n- `valorPago` (número): O valor pago."
                     },
                     "response": []
                 }

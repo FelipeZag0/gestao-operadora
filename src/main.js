@@ -42,7 +42,7 @@ async function initializeDatabase() {
     console.log('Database connection has been established successfully.');
 
     // Sync all models (create tables if they don't exist)
-    await sync();
+    await sync({ force: true });
     console.log('All models were synchronized successfully.');
   } catch (error) {
     console.error('Unable to connect to the database or sync models:', error);
