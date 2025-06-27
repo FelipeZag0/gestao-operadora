@@ -85,7 +85,7 @@ O código é estruturado seguindo os princípios **SOLID** para garantir modular
 
 1.  **Clone o repositório:**
     ```bash
-    git clone <seu-repositorio-url>
+    git clone https://github.com/FelipeZag0/fase-1.git
     cd subscription-management-system
     ```
 2.  **Instale dependências:**
