@@ -40,7 +40,7 @@ O sistema permite:
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/FelipeZag0/fase-1.git
+[git clone https://github.com/FelipeZag0/fase-1.git](https://github.com/FelipeZag0/gestao-operadora.git)
 cd subscription-management-system
 ```
 
