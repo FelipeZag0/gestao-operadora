@@ -40,8 +40,8 @@ O sistema permite:
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/FelipeZag0/fase-1.git
-cd subscription-management-system
+https://github.com/FelipeZag0/gestao-operadora.git
+cd gestao-operadora
 ```
 
 2. Instale as dependências:
