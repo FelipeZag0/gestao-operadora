@@ -1,6 +1,5 @@
 # Sistema de Controle de Planos de Operadora 📡
 
-**Desenvolvido por:** [Seu Nome]  
 Sistema de gerenciamento de clientes, planos e assinaturas para operadoras. Projeto desenvolvido seguindo os princípios da Arquitetura Limpa e SOLID.
 
 ---
